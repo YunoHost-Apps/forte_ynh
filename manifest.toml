@@ -1,17 +1,17 @@
 packaging_format = 2
 
-id = "streams"
-name = "Streams"
+id = "forte"
+name = "Forte"
 description.en = "Open source fediverse server"
 description.fr = "Serveur fediverse open source"
 
-version = "24.8.27~ynh1"
+version = "24.8.18.1~ynh1"
 
 maintainers = ["Papa Dragon"]
 
 [upstream]
 license = "Unlicense"
-code = "https://codeberg.org/streams/streams"
+code = "https://codeberg.org/fortified/forte"
 
 [integration]
 yunohost = ">= 11.2.18"
@@ -49,16 +49,16 @@ ram.runtime = "50M"
 
     [resources.sources]
         [resources.sources.main]
-        url = "https://codeberg.org/streams/streams/archive/v24.8.27.tar.gz"
-        sha256 = "61bc0e0cb088c2644bcc4993f41af449d111a394e559eede75204b504b5fcbbb"
+        url = "https://codeberg.org/fortified/forte/archive/v24.8.18.1.tar.gz"
+        sha256 = "d8545550a2cc9093637208907a37e70bd1d1dfcc985fca91232831a7a8e3b32c"
         autoupdate.strategy = "latest_forgejo_tag"
         autoupdate.version_regex = "^v(.*)$"
 
         [resources.sources.addons]
-        url = "https://codeberg.org/streams/streams-addons/archive/47ce10d5f6e855186d10f2373dc7bbe385454cce.tar.gz"
-        sha256 = "ddea62f2c745ccb29f291813e0a8a24b122c9eba67539fd3a792862c6653b134"
+        url = "https://codeberg.org/fortified/forte-addons/archive/47ce10d5f6e855186d10f2373dc7bbe385454cce.tar.gz"
+        sha256 = "adcfd71cedae074aa6c50d536a309caa0fd98f29bfd0765896828735e4ca4aca"
         autoupdate.strategy = "latest_forgejo_commit"
-        autoupdate.upstream = "https://codeberg.org/streams/streams-addons"
+        autoupdate.upstream = "https://codeberg.org/fortified/forte-addons"
 
     [resources.ports]
 
