@@ -31,7 +31,7 @@ App::$config['system']['timezone'] = '__TIMEZONE__';
 // What is your site url? DO NOT ADD A TRAILING SLASH!
 
 App::$config['system']['baseurl'] = 'https://__DOMAIN__';
-App::$config['system']['sitename'] = "Forte";
+App::$config['system']['sitename'] = "YunoHost Streams";
 App::$config['system']['location_hash'] = '__RANDOM_STRING__';
 
 // These lines set additional security headers to be sent with all responses
