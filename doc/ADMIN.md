@@ -8,10 +8,8 @@
 
 - **Failing to get admin rights**: If the admin cannot access the admin settings at `https://mywebsite.domain.tld/admin` or you want to grant admin rights to any other registered user on your website, then you have to **manually add 4096** to the ***account_roles*** under ***accounts*** for that user in the **database through software like phpMyAdmin**.
 
-- **For logs**: Go to **admin->logs** and enter the file name **/var/log/forte/php.log**.
-
 - **Failed Database after Upgrade**: If the database upgrade fails after version upgrade, you can visit the dedicated page, `https://mywebsite.domain.tld/admin/dbsync/`, and check the numbers of failed updates. These updates will have to be ran manually using software such as **phpMyAdmin**.
 
 ### Custom configuration
 
-- **Additional settings in .htconfig.php**: If you need to add some additional lines in .htconfig.php (as described on the [Service Classes](https://codeberg.org/streams/streams/src/commit/c75afc9ab4b9ba19628008c14459756edf9c291a/doc/admin/en/Service_Classes.mc) or [PHPMailer](https://codeberg.org/streams/streams/src/commit/c75afc9ab4b9ba19628008c14459756edf9c291a/doc/admin/en/SMTP.mc) documentation), please add it in the `/home/yunohost.app/forte/extra_conf.php` file (or `/home/yunohost.app/forte__X/extra_conf.php` if you installed more than one site). Do not touch .htconfig.php as your changes will be wiped when the YunoHost package is upgraded.
+- **Additional settings in .htconfig.php**: If you need to add some additional lines in .htconfig.php (as described on the [Service Classes](https://codeberg.org/fortified/forte/src/branch/release/doc/admin/en/Service_Classes.mc) or [PHPMailer](https://codeberg.org/fortified/forte/src/branch/release/doc/admin/en/SMTP.mc) documentation), please add it in the `/home/yunohost.app/forte/extra_conf.php` file (or `/home/yunohost.app/forte__X/extra_conf.php` if you installed more than one site). Do not touch .htconfig.php as your changes will be wiped when the YunoHost package is upgraded.

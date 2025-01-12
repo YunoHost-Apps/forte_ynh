@@ -95,9 +95,16 @@ ynh_config_add --template="cronjobs" --destination="/etc/cron.d/$app"
 #=================================================
 ynh_script_progression "Configuring log rotation..."
 
-# Use logrotate to manage application logfile(s)
+# Use logrotate to manage app-specific logfile(s)
 ynh_config_add_logrotate "/var/log/$app/php.log"
 ynh_exec_as_app touch "/var/log/$app/php.log"
+
+# Define log file within the app too
+pushd "$install_dir"
+    ynh_exec_as_app php8.3 util/config system logfile /var/log/$app/php.log
+    ynh_exec_as_app php8.3 util/config system loglevel 0
+    ynh_exec_as_app php8.3 util/config system debugging 1
+popd
 
 #=================================================
 # SETUP FAIL2BAN
