@@ -1,3 +1,5 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
 packaging_format = 2
 
 id = "forte"
@@ -18,8 +20,11 @@ yunohost = ">= 11.2.18"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
+
 ldap = false
+
 sso = false
+
 disk = "150M"
 ram.build = "200M"
 ram.runtime = "50M"
@@ -48,19 +53,18 @@ ram.runtime = "50M"
 [resources]
 
     [resources.sources]
-        [resources.sources.main]
-        url = "https://codeberg.org/fortified/forte/archive/v25.3.12.tar.gz"
-        sha256 = "7ff3bb2e15c0eba0d51ef653d6ae821273d544999fc17e3cc24431f2a3904ac0"
-        autoupdate.strategy = "latest_forgejo_tag"
-        autoupdate.version_regex = "^v(.*)$"
 
-        [resources.sources.addons]
-        url = "https://codeberg.org/fortified/forte-addons/archive/86d0031b7ae42b27ddaa9ef9a60a469e63395323.tar.gz"
-        sha256 = "0438eb3897a91502c0ff9e3e3570e1ba78ffe195f3843b820ae20035e3dd5ec8"
-        autoupdate.strategy = "latest_forgejo_commit"
-        autoupdate.upstream = "https://codeberg.org/fortified/forte-addons"
+    [resources.sources.main]
+    url = "https://codeberg.org/fortified/forte/archive/v25.3.12.tar.gz"
+    sha256 = "7ff3bb2e15c0eba0d51ef653d6ae821273d544999fc17e3cc24431f2a3904ac0"
+    autoupdate.strategy = "latest_forgejo_tag"
+    autoupdate.version_regex = "^v(.*)$"
 
-    [resources.ports]
+    [resources.sources.addons]
+    url = "https://codeberg.org/fortified/forte-addons/archive/86d0031b7ae42b27ddaa9ef9a60a469e63395323.tar.gz"
+    sha256 = "0438eb3897a91502c0ff9e3e3570e1ba78ffe195f3843b820ae20035e3dd5ec8"
+    autoupdate.strategy = "latest_forgejo_commit"
+    autoupdate.upstream = "https://codeberg.org/fortified/forte-addons"
 
     [resources.system_user]
 
@@ -71,6 +75,8 @@ ram.runtime = "50M"
 
     [resources.permissions]
     main.url = "/"
+
+    [resources.ports]
 
     [resources.apt]
     packages = "php8.3-mbstring, php8.3-cli, php8.3-imagick, php8.3-xml, php8.3-zip, php8.3-curl, php8.3-ldap, php8.3-gd, mariadb-server, php8.3-mysql php8.3-gmp"

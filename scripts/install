@@ -1,12 +1,15 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# INITIALIZE SETTINGS
+# INITIALIZE AND STORE SETTINGS
 #=================================================
-ynh_script_progression "Initialize installation settings..."
 
 ynh_app_setting_set_default --key=email --value=$(ynh_user_get_info --username=$admin --key=mail)
 ynh_app_setting_set_default --key=upload --value="256M"
@@ -25,47 +28,19 @@ ynh_mysql_db_shell \
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-# Download, check integrity, uncompress and patch the source from GitHub
+# Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir"
 ynh_setup_source --dest_dir="$install_dir/addon" --source_id="addons"
 
 ynh_exec_as_app mkdir -p "$install_dir/store"
-ynh_exec_as_app mkdir -p  "$install_dir/cache/smarty3"
+ynh_exec_as_app mkdir -p "$install_dir/cache/smarty3"
 
 ynh_exec_as_app chmod -R 775 $install_dir/store $install_dir/cache
 
 #=================================================
-# PHP-FPM CONFIGURATION
+# APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression "Configuring PHP-FPM..."
-
-# Create a dedicated PHP-FPM config
-ynh_config_add_phpfpm
-
-# Create a dedicated NGINX config
-ynh_config_add_nginx
-
-#=================================================
-# COMPOSER
-#=================================================
-ynh_script_progression "Pulling in external libraries with Composer..."
-
-ynh_composer_install
-ynh_composer_exec install --no-dev
-
-#=================================================
-# SPECIFIC SETUP
-#=================================================
-# PROVISION DATABASE
-#=================================================
-ynh_script_progression "Provisionning database..."
-
-ynh_mysql_db_shell < $install_dir/install/schema_mysql.sql
-
-#=================================================
-# ADD A CONFIGURATION
-#=================================================
-ynh_script_progression "Adding $app's configuration..."
+ynh_script_progression "Adding $app's configuration files..."
 
 timezone=$(</etc/timezone)
 
@@ -81,6 +56,32 @@ ynh_config_add --template="htconfig.sample.php" --destination="$install_dir/.htc
 ynh_store_file_checksum $install_dir/.htconfig.php
 
 ynh_exec_as_app touch $data_dir/extra_conf.php
+
+#=================================================
+# SYSTEM CONFIGURATION
+#=================================================
+ynh_script_progression "Adding system configurations related to $app..."
+
+# Create a PHP-FPM config (with conf/extra_php-fpm.conf being appended to it)
+ynh_config_add_phpfpm
+
+# Create a dedicated NGINX config using the conf/nginx.conf template
+ynh_config_add_nginx
+
+#=================================================
+# COMPOSER
+#=================================================
+ynh_script_progression "Pulling in external libraries with Composer..."
+
+ynh_composer_install
+ynh_composer_exec install --no-dev
+
+#=================================================
+# PROVISION DATABASE
+#=================================================
+ynh_script_progression "Provisionning database..."
+
+ynh_mysql_db_shell < $install_dir/install/schema_mysql.sql
 
 #=================================================
 # SET CRON JOBS
