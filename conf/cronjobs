@@ -1,3 +1,2 @@
 # Run poller periodically to update your website
 */10 * * * * __APP__ /usr/bin/php__PHP_VERSION__ -f src/Daemon/Run.php Cron > /dev/null 2>&1
-
