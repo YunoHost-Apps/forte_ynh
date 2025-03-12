@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
 
@@ -42,9 +46,24 @@ fi
 ynh_exec_as_app ln -s $data_dir/cache $install_dir/
 
 #=================================================
-# PHP-FPM CONFIGURATION
+# UPDATE A CONFIG FILE
 #=================================================
-ynh_script_progression "Upgrading PHP-FPM configuration..."
+ynh_script_progression "Updating $app's configuration files..."
+
+timezone=$(</etc/timezone)
+max_imported_follow=10
+
+ynh_config_add --template="htconfig.sample.php" --destination="$install_dir/.htconfig.php"
+
+if [ ! -f $data_dir/extra_conf.php ]
+then
+    ynh_exec_as_app touch $data_dir/extra_conf.php
+fi
+
+#=================================================
+# REAPPLY SYSTEM CONFIGURATIONS
+#=================================================
+ynh_script_progression "Upgrading system configurations related to $app..."
 
 # Create a dedicated PHP-FPM config
 ynh_config_add_phpfpm
@@ -59,21 +78,6 @@ ynh_script_progression "Pulling in external libraries with Composer..."
 
 ynh_composer_install
 ynh_composer_exec install --no-dev
-
-#=================================================
-# UPDATE A CONFIG FILE
-#=================================================
-ynh_script_progression "Updating configuration..."
-
-timezone=$(</etc/timezone)
-max_imported_follow=10
-
-ynh_config_add --template="htconfig.sample.php" --destination="$install_dir/.htconfig.php"
-
-if [ ! -f $data_dir/extra_conf.php ]
-then
-    ynh_exec_as_app touch $data_dir/extra_conf.php
-fi
 
 #=================================================
 # UPGRADE CRON JOB
