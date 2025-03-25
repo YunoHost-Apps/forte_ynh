@@ -21,7 +21,7 @@ EZ editatu eskuz.
 [Forte](https://codeberg.org/fortified/forte/) is an open source ActivityPub/fediverse server.
 
 
-**Paketatutako bertsioa:** 25.3.19~ynh1
+**Paketatutako bertsioa:** 25.3.26~ynh1
 
 ## Pantaila-argazkiak
 
@@ -37,7 +37,7 @@ EZ editatu eskuz.
 
 Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/forte_ynh/tree/testing).
 
-`testing` abarra probatzeko, ondorengoa egin:
+`testing` abarra probatzeko, honakoa egin:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/forte_ynh/tree/testing --debug
