@@ -21,7 +21,7 @@ Ini TIDAK boleh diedit dengan tangan.
 [Forte](https://codeberg.org/fortified/forte/) is an open source ActivityPub/fediverse server.
 
 
-**Versi terkirim:** 25.3.30~ynh1
+**Versi terkirim:** 25.4.2~ynh1
 
 ## Tangkapan Layar
 
