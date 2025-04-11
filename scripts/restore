@@ -32,6 +32,11 @@ ynh_mysql_db_shell \
 ynh_mysql_db_shell  < "./db.sql"
 
 #=================================================
+# RESTORE LOGFILES
+#=================================================
+ynh_restore "/var/log/$app"
+
+#=================================================
 # RESTORE SYSTEM CONFIGURATIONS
 #=================================================
 ynh_script_progression "Restoring system configurations related to $app..."
