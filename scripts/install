@@ -42,7 +42,7 @@ ynh_exec_as_app chmod -R 775 $install_dir/store $install_dir/cache
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
 
-timezone=$(</etc/timezone)
+timezone=$(timedatectl show --value --property=Timezone)
 
 if [ $activate_directory -eq 1 ]
 then

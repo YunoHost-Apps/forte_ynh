@@ -50,7 +50,7 @@ ynh_exec_as_app ln -s $data_dir/cache $install_dir/
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
-timezone=$(</etc/timezone)
+timezone=$(timedatectl show --value --property=Timezone)
 max_imported_follow=10
 
 ynh_config_add --template="htconfig.sample.php" --destination="$install_dir/.htconfig.php"
