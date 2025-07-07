@@ -7,7 +7,7 @@ name = "Forte"
 description.en = "open source ActivityPub/fediverse server"
 description.fr = "Serveur ActivityPub/fediverse open source"
 
-version = "25.6.30~ynh2"
+version = "25.7.7~ynh1"
 
 maintainers = ["Papa Dragon"]
 
@@ -55,8 +55,8 @@ ram.runtime = "50M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://codeberg.org/fortified/forte/archive/v25.6.30.tar.gz"
-    sha256 = "f96b31d777f62b298a66aa82e1a7e0bfe7732d2bbc5a8aa129a2ad865738e1d7"
+    url = "https://codeberg.org/fortified/forte/archive/v25.7.7.tar.gz"
+    sha256 = "c21af1a3c2ad6ec4dedd68f3755b8c820aace5112f81605c43242c388cf17142"
 
     autoupdate.strategy = "latest_forgejo_tag"
     autoupdate.version_regex = "^v(.*)$"
