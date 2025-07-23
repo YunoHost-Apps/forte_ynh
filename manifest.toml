@@ -62,8 +62,9 @@ ram.runtime = "50M"
     autoupdate.version_regex = "^v(.*)$"
 
     [resources.sources.addons]
-    url = "https://codeberg.org/fortified/forte/archive/v25.7.22.tar.gz"
-    sha256 = "4bc58cb9a2a180c4bfac8a1040cffd1b8668d8e15fb59d6ae21ef57b7fc77083"
+    url = "https://codeberg.org/fortified/forte-addons/archive/v25.7.22.tar.gz"
+    sha256 = "f10d2b57cfe0ed9331dc3e8085e2afbaa520418e6febe7a8a6f0a0f0f7e0661d"
+    autoupdate.upstream = "https://codeberg.org/fortified/forte-addons"
     autoupdate.strategy = "latest_forgejo_tag"
     autoupdate.version_regex = "^v(.*)$"
 
