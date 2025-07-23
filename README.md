@@ -10,12 +10,16 @@ It shall NOT be edited by hand.
 
 open source ActivityPub/fediverse server
 
-[![Version: 25.7.22~ynh2](https://img.shields.io/badge/Version-25.7.22~ynh2-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/forte/)
+[![Version: 25.7.22~ynh3](https://img.shields.io/badge/Version-25.7.22~ynh3-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/forte/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/forte"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
 <a href="https://github.com/YunoHost-Apps/forte_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
 </div>
+
+
+## Screenshots
+![Screenshot of Forte](./doc/screenshots/example.png)
 
 ## 📦 Developer info
 
