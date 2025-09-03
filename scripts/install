@@ -40,6 +40,8 @@ ynh_exec_as_app chmod -R 775 $data_dir/store $data_dir/cache
 ynh_exec_as_app ln -s $data_dir/store $install_dir/
 ynh_exec_as_app ln -s $data_dir/cache $install_dir/
 
+chown -R "$app:www-data" "$install_dir"
+
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
@@ -76,7 +78,6 @@ ynh_config_add_nginx
 #=================================================
 ynh_script_progression "Pulling in external libraries with Composer..."
 
-ynh_composer_install
 ynh_composer_exec install --no-dev
 
 #=================================================
@@ -105,9 +106,9 @@ ynh_exec_as_app touch "/var/log/$app/php.log"
 
 # Define log file within the app too
 pushd "$install_dir"
-    ynh_exec_as_app php8.3 util/config system logfile /var/log/$app/php.log
-    ynh_exec_as_app php8.3 util/config system loglevel 0
-    ynh_exec_as_app php8.3 util/config system debugging 1
+    ynh_exec_as_app php$YNH_PHP_VERSION util/config system logfile /var/log/$app/php.log
+    ynh_exec_as_app php$YNH_PHP_VERSION util/config system loglevel 0
+    ynh_exec_as_app php$YNH_PHP_VERSION util/config system debugging 1
 popd
 
 #=================================================
