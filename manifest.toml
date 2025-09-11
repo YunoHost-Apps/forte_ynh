@@ -7,7 +7,7 @@ name = "Forte"
 description.en = "open source ActivityPub/fediverse server"
 description.fr = "Serveur ActivityPub/fediverse open source"
 
-version = "25.9.3~ynh1"
+version = "25.9.11~ynh1"
 
 maintainers = ["Papa Dragon"]
 
@@ -22,7 +22,6 @@ architectures = "all"
 multi_instance = true
 
 ldap = false
-
 sso = false
 
 disk = "150M"
@@ -55,8 +54,8 @@ ram.runtime = "50M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://codeberg.org/fortified/forte/archive/v25.9.3.tar.gz"
-    sha256 = "86cde178abbb5778c99e963607b7c2bc71adef1312b02a0eeb333e360b06e3bd"
+    url = "https://codeberg.org/fortified/forte/archive/v25.9.11.tar.gz"
+    sha256 = "528756e39f8aedc49c44d7acface53a5563d5049f778d9a268e34970f3d69f4e"
 
     autoupdate.strategy = "latest_forgejo_tag"
     autoupdate.version_regex = "^v(.*)$"
@@ -81,7 +80,7 @@ ram.runtime = "50M"
     [resources.ports]
 
     [resources.apt]
-    packages = "php8.4-mbstring, php8.4-cli, php8.4-imagick, php8.4-xml, php8.4-zip, php8.4-curl, php8.4-ldap, php8.4-gd, mariadb-server, php8.4-mysql php8.4-gmp"
+    packages = "php8.4-mbstring, php8.4-cli, php8.4-imagick, php8.4-xml, php8.4-zip, php8.4-curl, php8.4-ldap, php8.4-gd, mariadb-server, php8.4-mysql, php8.4-gmp"
 
     [resources.database]
     type = "mysql"
