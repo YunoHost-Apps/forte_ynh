@@ -53,8 +53,6 @@ ram.runtime = "50M"
 
     [resources.sources]
 
-    [resources.sources]
-
         [resources.sources.main]
         url = "https://codeberg.org/fortified/forte/archive/4df9d59f131bc6a5d69ed75234324ce24fa976a6.tar.gz"
         sha256 = "f7397bb6d06ad9ff081439bfcc917194e16d8f3de4543e95d77a3c0a5f9ff469"
