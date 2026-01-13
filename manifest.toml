@@ -7,7 +7,7 @@ name = "Forte"
 description.en = "open source ActivityPub/fediverse server"
 description.fr = "Serveur ActivityPub/fediverse open source"
 
-version = "26.1.8~ynh1"
+version = "26.1.8~ynh2"
 
 maintainers = ["Papa Dragon"]
 
@@ -16,7 +16,7 @@ license = "Unlicense"
 code = "https://codeberg.org/fortified/forte"
 
 [integration]
-yunohost = ">= 12.1.17"
+yunohost = ">= 12.1.38"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
