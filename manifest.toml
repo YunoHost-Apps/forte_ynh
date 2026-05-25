@@ -7,7 +7,7 @@ name = "Forte"
 description.en = "open source ActivityPub/fediverse server"
 description.fr = "Serveur ActivityPub/fediverse open source"
 
-version = "26.5.9~ynh3"
+version = "26.5.9~ynh4"
 
 maintainers = ["Papa Dragon"]
 
