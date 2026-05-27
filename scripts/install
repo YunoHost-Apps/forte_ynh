@@ -13,7 +13,7 @@ source /usr/share/yunohost/helpers
 ynh_app_setting_set_default --key=email --value=$(ynh_user_get_info --username=$admin --key=mail)
 ynh_app_setting_set_default --key=upload --value="256M"
 ynh_app_setting_set_default --key=random_string --value="$(ynh_string_random --length=48)"
-ynh_app_setting_set_default --key=db_vrsn --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+' | head -n 1)"
+ynh_app_setting_set_default --key=db_vers --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+' | head -n 1)"
 
 #=================================================
 # CREATE A DATABASE
@@ -105,11 +105,6 @@ ynh_exec_as_app touch "/var/log/$app/php.log"
 
 # Define log file within the app too
 pushd "$install_dir"
-	# Temporary fix
-	if [[ ! $(grep -E ^DATABASE_URL=\' .env.local) ]]
-	then
-		ynh_exec_as_app ynh_replace --match=DATABASE_URL= --replace=DATABASE_URL=\' --file=.env.local
-	fi
     ynh_exec_as_app php$php_version util/config system logfile /var/log/$app/php.log
     ynh_exec_as_app php$php_version util/config system loglevel 0
     ynh_exec_as_app php$php_version util/config system debugging 1
