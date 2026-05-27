@@ -39,6 +39,16 @@ ynh_exec_as_app ln -s $data_dir/cache $install_dir/
 chown -R "$app:www-data" "$install_dir"
 
 #=================================================
+# CHECK MARIADB VERSION
+#=================================================
+if [[ -z $(ynh_app_setting_get --key=db_vers) ]]
+then
+	ynh_app_setting_set_default --key=db_vers --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+' | head -n 1)"
+else
+	ynh_app_setting_set --key=db_vers --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+' | head -n 1)"
+fi
+
+#=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
@@ -70,6 +80,9 @@ ynh_config_add_nginx
 ynh_script_progression "Pulling in external libraries with Composer..."
 
 ynh_composer_exec install --no-dev
+
+# Doctrine needs this
+ynh_config_add --template="env.local" --destination="$install_dir/.env.local"
 
 #=================================================
 # UPGRADE CRON JOB
