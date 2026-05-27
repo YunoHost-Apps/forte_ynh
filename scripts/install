@@ -86,6 +86,9 @@ ynh_script_progression "Provisionning database..."
 
 ynh_mysql_db_shell < $install_dir/install/schema_mysql.sql
 
+# Doctrine needs this
+ynh_config_add --template="env.local" --destination="$install_dir/.env.local"
+
 #=================================================
 # SET CRON JOBS
 #=================================================
@@ -102,9 +105,6 @@ ynh_script_progression "Configuring log rotation..."
 # Use logrotate to manage app-specific logfile(s)
 ynh_config_add_logrotate "/var/log/$app/php.log"
 ynh_exec_as_app touch "/var/log/$app/php.log"
-
-# Temporary fix
-ynh_config_add --template="env.local" --destination="$install_dir/.env.local"
 
 # Define log file within the app too
 pushd "$install_dir"
