@@ -103,6 +103,9 @@ ynh_script_progression "Configuring log rotation..."
 ynh_config_add_logrotate "/var/log/$app/php.log"
 ynh_exec_as_app touch "/var/log/$app/php.log"
 
+# Temporary fix
+ynh_config_add --template="env.local" --destination="$install_dir/.env.local"
+
 # Define log file within the app too
 pushd "$install_dir"
     ynh_exec_as_app php$php_version util/config system logfile /var/log/$app/php.log
