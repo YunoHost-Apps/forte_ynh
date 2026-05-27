@@ -39,6 +39,16 @@ ynh_exec_as_app ln -s $data_dir/cache $install_dir/
 chown -R "$app:www-data" "$install_dir"
 
 #=================================================
+# CHECK MARIADB VERSION
+#=================================================
+if [[ -z $db_vers ]]
+then
+	ynh_app_setting_set_default --key=db_vers --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+' | head -n 1)"
+else
+	ynh_app_setting_set --key=db_vers --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+' | head -n 1)"
+fi
+
+#=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
@@ -52,17 +62,6 @@ if [ ! -f $data_dir/extra_conf.php ]
 then
     ynh_exec_as_app touch $data_dir/extra_conf.php
 fi
-
-#=================================================
-# CHECK MARIADB VERSION
-#=================================================
-if [[ -z $db_vers ]]
-then
-	ynh_app_setting_set_default --key=db_vers --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+' | head -n 1)"
-else
-	ynh_app_setting_set --key=db_vers --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+' | head -n 1)"
-fi
-
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
