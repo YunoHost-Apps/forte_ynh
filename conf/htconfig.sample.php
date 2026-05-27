@@ -18,7 +18,7 @@ $db_user = '__DB_USER__';
 $db_pass = '__DB_PWD__';
 $db_data = '__DB_NAME__';
 $db_type = 0; // use 1 for postgres, 0 for mysql
-$db_vrsn = ''; // Required for doctrine
+$db_vrsn = '__DB_VRSN__'; // Required for doctrine
 
 /*
  * Notice: Many of the following settings will be available in the admin panel

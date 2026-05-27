@@ -13,6 +13,7 @@ source /usr/share/yunohost/helpers
 ynh_app_setting_set_default --key=email --value=$(ynh_user_get_info --username=$admin --key=mail)
 ynh_app_setting_set_default --key=upload --value="256M"
 ynh_app_setting_set_default --key=random_string --value="$(ynh_string_random --length=48)"
+ynh_app_setting_set_default --key=db_vrsn --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+' | head -n 1)"
 
 #=================================================
 # CREATE A DATABASE
