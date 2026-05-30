@@ -86,9 +86,6 @@ ynh_script_progression "Provisionning database..."
 
 ynh_mysql_db_shell < $install_dir/install/schema_mysql.sql
 
-# Doctrine needs this
-ynh_config_add --template="env.local" --destination="$install_dir/.env.local"
-
 #=================================================
 # SET CRON JOBS
 #=================================================

@@ -12,13 +12,13 @@
 
 // Then set the following for your MySQL installation
 
-$db_host = 'localhost'; // Use 'localhost' if you aren't using a remote server
+$db_host = 'localhost';
 $db_port = 0;                    // leave 0 for default or set your port
 $db_user = '__DB_USER__';
 $db_pass = '__DB_PWD__';
 $db_data = '__DB_NAME__';
 $db_type = 0; // use 1 for postgres, 0 for mysql
-$db_vers = '__DB_VERS__'; // Required for doctrine
+$db_vers = '__DB_VERS__';
 
 /*
  * Notice: Many of the following settings will be available in the admin panel

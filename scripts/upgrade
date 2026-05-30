@@ -81,9 +81,6 @@ ynh_script_progression "Pulling in external libraries with Composer..."
 
 ynh_composer_exec install --no-dev
 
-# Doctrine needs this
-ynh_config_add --template="env.local" --destination="$install_dir/.env.local"
-
 #=================================================
 # UPGRADE CRON JOB
 #=================================================
