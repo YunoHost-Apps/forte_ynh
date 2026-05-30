@@ -43,9 +43,9 @@ chown -R "$app:www-data" "$install_dir"
 #=================================================
 if [[ -z $(ynh_app_setting_get --key=db_vers) ]]
 then
-	ynh_app_setting_set_default --key=db_vers --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+' | head -n 1)"
+	ynh_app_setting_set_default --key=db_vers --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')"
 else
-	ynh_app_setting_set --key=db_vers --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+' | head -n 1)"
+	ynh_app_setting_set --key=db_vers --value="$(mariadb -V | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')"
 fi
 
 #=================================================
