@@ -25,8 +25,8 @@ then
     ynh_exec_as_app mv $install_dir/cache $data_dir/
 fi
 
-ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="composer.phar"
-ynh_setup_source --dest_dir="$install_dir/addon" --source_id="addons" --full_replace
+ynh_setup_source --dest_dir="$install_dir" --full_replace=1
+ynh_setup_source --dest_dir="$install_dir/addon" --source_id="addons" --full_replace=1
 
 # We restore symlinks to stuff in $data_dir
 ynh_exec_as_app ln -s $data_dir/store $install_dir/
@@ -77,13 +77,6 @@ ynh_config_add_nginx
 #=================================================
 # COMPOSER
 #=================================================
-
-#Fix 26.5.27~ynh1. We need to remove a probable broken .env.local file
-if ynh_app_upgrading_from_version_before_or_equal_to 26.5.27~ynh1 && [[ $(grep '//\ ' $install_dir/.env.local) ]]
-then
-	ynh_safe_rm $install_dir/.env.local
-fi 
-
 ynh_script_progression "Pulling in external libraries with Composer..."
 
 ynh_composer_exec install --no-dev
