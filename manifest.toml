@@ -16,7 +16,7 @@ license = "Unlicense"
 code = "https://codeberg.org/fortified/forte"
 
 [integration]
-yunohost = ">= 12.1.39"
+yunohost = ">= 12.1.40"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
@@ -85,4 +85,4 @@ ram.runtime = "50M"
     type = "mysql"
 
     [resources.composer]
-    version = "2.10.2"
+    version = "2.10.3"
