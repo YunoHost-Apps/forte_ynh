@@ -7,7 +7,7 @@ name = "Forte"
 description.en = "open source ActivityPub/fediverse server"
 description.fr = "Serveur ActivityPub/fediverse open source"
 
-version = "26.9.10~ynh1"
+version = "26.10.14~ynh1"
 
 maintainers = ["Papa Dragon"]
 
@@ -16,7 +16,7 @@ license = "Unlicense"
 code = "https://codeberg.org/fortified/forte"
 
 [integration]
-yunohost = ">= 12.1.39"
+yunohost = ">= 12.1.40"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
@@ -54,8 +54,8 @@ ram.runtime = "50M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://codeberg.org/fortified/forte/archive/v26.9.10.tar.gz"
-        sha256 = "aa0a6b3b0ce94dc93c72dda671e20861c8d316752a7fa8acd06ebce85b102cbe"
+        url = "https://codeberg.org/fortified/forte/archive/v26.10.14.tar.gz"
+        sha256 = "979c4c5bb56edbeb25170232d9156ec8ae26c3b002b6c81c77f80132ce8e1ed5"
         autoupdate.strategy = "latest_forgejo_tag"
         autoupdate.version_regex = "^v(.*)$"
 
@@ -85,4 +85,4 @@ ram.runtime = "50M"
     type = "mysql"
 
     [resources.composer]
-    version = "2.10.2"
+    version = "2.10.3"
